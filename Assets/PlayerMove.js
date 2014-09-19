@@ -4,9 +4,10 @@ public var speed : float = 10;
 public var jumpSpeed : float = 10;
 private var moveDirection : Vector3 = Vector3.zero;
 private var gravity : Vector3 = Vector3.zero;
-var camPan : Transform;
-var camTilt : Transform;
-var cam : Transform;
+public var camPan : Transform;
+public var camTilt : Transform;
+public var cam : Transform;
+public var camSpeed : float = 2.00; //speed rotazione camera
 private var controller : CharacterController;
 
 private var jumping : boolean = false;
@@ -52,5 +53,8 @@ function Update () {
 	moveDirection += gravity;
 	
 	controller.Move(moveDirection*Time.deltaTime);
+	
+    //rotazione camera
+  	this.transform.Rotate(0, camSpeed * Input.GetAxis ("Mouse X"), 0);
 	
 }
